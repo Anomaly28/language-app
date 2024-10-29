@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>LANGUAGE APP</title>
+<style>
+* { font-size: 40px; }
+body { background-color: azure; }
+input[type=radio] { width: 2%; height: 0.6em; }
+</style>
+</head>
+<body>
+<center>
+<h1>LANGUAGE APP</h1>
+<form onsubmit="show(event)">
+    <input type="text" id="name" placeholder="Enter your name" />
+    <br/><br/>
+    <input type="checkbox" id="python"/> Python
+    <input type="checkbox" id="java"/> java
+    <input type="checkbox" id="js"/> Java Script
+    <br/><br/>
+    <input type="submit" />
+</form>
+<h2 id="msg"></h2>
+<script>
+function show(event) {
+    event.preventDefault(); // Prevent form submission
+
+    let name = document.getElementById("name");
+    let python = document.getElementById("python");
+    let java = document.getElementById("java");
+    let js = document.getElementById("js");
+    let msg = document.getElementById("msg");
+
+    // Name validation
+    if (name.value === "") {
+        alert("Please enter your name");
+        msg.innerHTML = "";
+        name.focus();
+        return;
+    }
+    if (!name.value.match("^[A-Za-z ]{2,50}$")) {
+        alert("Name should contain only alphabets and spaces");
+        msg.innerHTML = "";
+        name.focus();
+        return;
+    }
+
+    // Food choice selection validation
+    let lang = "";
+    if (python.checked) lang=lang+" Python " ;
+if (java.checked) lang=lang+" Java " ;
+if (js.checked) lang=lang+" Java Script " ;
+ 
+    // Display result
+    let ans = "Name = " + name.value + "   languages = " + lang;
+    msg.innerHTML = ans;
+}
+</script>
+</center>
+</body>
+</html>
